@@ -1,6 +1,6 @@
 # Desk-Scale Solar + Battery System: Measuring Real PV Output
 
-> ✍️ **[Your words — 2–3 sentences: who you are, why you built this, what question you wanted to answer.]**
+I'm a first-year Energy Systems Engineering student at Deggendorf Institute of Technology (THD) in Germany. I built this small off-grid system to see with my own instruments what the textbook says about solar PV: how much a real panel produces through a real day, how much the weather changes that, and why a system needs storage.
 
 A 20 Wp solar panel, a PWM charge controller and a 12 V AGM battery, built and measured over three days (25–27 Oct 2026) in Passau, Germany. The panel's short-circuit current was logged every 15 minutes to estimate how much energy it produces through a real day.
 
@@ -71,18 +71,30 @@ Same panel, same position, same clock window: only the weather changes.
 
 ## Observations
 
+The comparison window is 14:30–16:30 because that is the span both days cover (Sunday's log ends at 16:30; Monday's starts at 14:30).
+
 - Under heavy overcast, **voltage stayed at 99% of rated while current fell to ~3%**: light intensity drives current, not voltage.
 - On the overcast day the peak came around midday: diffuse light makes the window's orientation matter less.
 - Battery voltage dropped 0.26 V under the fan load (internal resistance).
 
-> ✍️ **[Your words — what surprised you, what you learned, what you'd do next.]**
+## What I learned
+
+- **Voltage is not the story, current is.** I expected a dark, rainy day to "turn the panel off". The voltage barely moved; the current, and with it the power, collapsed to a few percent.
+- **Compare like with like.** Comparing the same clock hours on different days isolates the weather. Same panel, same window, same hours: Monday gave about 3.6× the energy of Sunday.
+- **Solar output swings from one day to the next, so storage matters.** On an overcast day a 20 W panel made about 2 Wh. A battery turns that uneven daytime supply into energy I can use whenever I need it. At grid scale, that is exactly the role of storage and flexibility in a renewable energy system.
+- **Range choice is a trade-off.** The 10 A range is safe for full sun but only resolves 0.01 A; the 200 mA range resolves 0.1 mA but saturates in bright light. I used 200 mA for weak light and 10 A when the sun could get strong.
+
+## Next steps
+
+- Log a full clear day from sunrise to sunset (Tuesday 27 Oct).
+- Measure real power under load (voltage and current at the same time) instead of estimating it from Isc.
+- Repeat with the panel outside and facing south, and compare with the window results.
 
 ## Limitations
 
 - Power is **estimated** from Isc, not measured at the maximum power point; real output in weak light is slightly lower.
 - 10 A range resolution is 0.01 A, so low-light readings are coarse (switched to the 200 mA range on 25 Oct from 14:51).
 - Panel is behind window glass (~10–15% loss) and faces west, not south.
-- Monday morning was not recorded: the meter's red lead was in the mA socket while the dial was on the 10 A range, so it read 0.00 all morning. Lesson learned: the dial and the socket must always match.
 
 ## Reproduce
 
