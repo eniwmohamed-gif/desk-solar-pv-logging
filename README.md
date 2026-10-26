@@ -39,14 +39,14 @@ Equivalent view: P = FF × Voc × Isc, with fill factor FF = (18.0 × 1.11) / (2
 
 ### Same hours, different days (14:30–16:30)
 
-Same panel, same position, same clock window: only the weather changes.
+Same panel, same position, same clock window: only the weather changes. Both days were overcast; the difference is the rain. Weather from the Apple Weather app (Passau, recorded conditions).
 
 ![Same-hours comparison](figures/window_comparison.png)
 
 | Day | Weather | Mean Isc | Energy 14:30–16:30 |
 |---|---|---|---|
-| Sun 25 Oct | Overcast, rain | 9.4 mA | 0.32 Wh |
-| Mon 26 Oct | | 35.0 mA | 1.17 Wh (≈ 3.6× Sunday) |
+| Sun 25 Oct | Overcast, rain from late morning to ~17:00 (high 10 °C) | 9.4 mA | 0.32 Wh |
+| Mon 26 Oct | Overcast, dry, 0% rain (high 12 °C) | 35.0 mA | 1.17 Wh (≈ 3.6× Sunday) |
 | Tue 27 Oct | | | |
 
 ### Everything logged
