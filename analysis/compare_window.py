@@ -12,7 +12,7 @@ P_RATED, ISC_STC = 20.0, 1.20
 WINDOW = ["14:30", "14:45", "15:00", "15:15", "15:30", "15:45", "16:00", "16:15", "16:30"]
 WEATHER = {"2026-10-25": "Sun 25 Oct · overcast, rain",
            "2026-10-26": "Mon 26 Oct · overcast, dry",
-           "2026-10-27": "Tue 27 Oct"}
+           "2026-10-27": "Tue 27 Oct · clear sky"}
 COLORS = {"2026-10-25": "#2a78d6", "2026-10-26": "#eb6834", "2026-10-27": "#1baf7a"}
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")

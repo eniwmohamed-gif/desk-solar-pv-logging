@@ -39,7 +39,7 @@ Equivalent view: P = FF × Voc × Isc, with fill factor FF = (18.0 × 1.11) / (2
 
 ### Same hours, different days (14:30–16:30)
 
-Same panel, same position, same clock hours: only the weather changes. Both days were overcast; the difference is the rain.
+Same panel, same position, same clock hours: only the weather changes.
 
 ![Same-hours comparison](figures/same_hours_comparison.png)
 
@@ -47,9 +47,15 @@ Same panel, same position, same clock hours: only the weather changes. Both days
 |---|---|---|---|---|---|
 | Sun 25 Oct | Overcast, rain (high 10 °C) | 11:15–16:30 | 50 mA at 12:45 (≈ 0.83 W, ≈ 42 W/m²) | ≈ 2.0 Wh | 0.32 Wh |
 | Mon 26 Oct | Overcast, dry (high 12 °C) | 14:30–17:00 | 62 mA at 14:30 (≈ 1.03 W, ≈ 52 W/m²) | ≈ 1.2 Wh | **1.17 Wh (≈ 3.6× Sunday)** |
-| Tue 27 Oct | | | | | |
+| Tue 27 Oct | Clear sky | 07:00–16:30 (gap 12:45–14:30) | 63 mA at 10:15 (≈ 1.05 W, ≈ 53 W/m²) | ≈ 4.4 Wh | 0.49 Wh |
 
-Weather: Apple Weather, Passau, recorded conditions.
+Weather: Apple Weather, Passau, recorded conditions (Sun, Mon); Tue from photos of the sky during logging.
+
+### A full day (Tuesday)
+
+![Tuesday full day](figures/tuesday_full_day.png)
+
+Output rose from sunrise, peaked mid-morning and faded towards sunset. Between 12:45 and 14:30 the panel was used for the charging tests below, so that span is not logged (the daily energy interpolates across it).
 
 ### Spot readings
 
@@ -60,12 +66,18 @@ Weather: Apple Weather, Passau, recorded conditions.
 | R3 | Battery voltage with fan running | 12.68 V |
 | R4 | Panel Voc (overcast, behind glass) | 21.8 V (99% of rated) |
 | R5 | Panel Isc (same conditions) | 0.04 A (3% of rated) |
+| R6 | Battery voltage while charging | 12.87 V |
+| R7 | Charging current, panel → controller | 20.8 mA |
 
 ## Observations
 
 - Under heavy overcast, **voltage stayed at 99% of rated while current fell to ~3%**: light intensity drives current, not voltage.
 - On the rainy day the output was flat and uneven; on the dry day it faded smoothly towards sunset.
 - On the rainy day the peak came around midday: under thick cloud the light is diffuse, so the window's orientation matters less.
+- **A clear sky did not beat a bright overcast one here.** In the same afternoon hours, Tuesday's clear sky gave less than Monday's bright overcast. The panel never received direct sun through the west window at that time, so it only saw diffuse sky light, and a bright cloud layer scatters more light towards the panel than a clear blue sky.
+- On Tuesday the peak came mid-morning (10:15), not in the afternoon as expected for a west-facing window. The cause is not confirmed; light reflected from sunlit roofs and walls opposite the window is one possible explanation.
+- With the PWM controller, the charging current (R7, 20.8 mA) was almost equal to the panel's short-circuit current at that moment (~21 mA): the controller connects the panel almost directly to the battery.
+- At this weak charging current the battery voltage barely rose (R6, 12.87 V): low-light output in late October only just covers small losses.
 - Battery voltage dropped 0.26 V under the fan load (internal resistance).
 
 ## What I learned
@@ -77,14 +89,14 @@ Weather: Apple Weather, Passau, recorded conditions.
 
 ## Next steps
 
-- Log a full day from sunrise to sunset (Tuesday 27 Oct).
 - Measure real power under load (voltage and current at the same time) instead of estimating it from Isc.
 - Repeat with the panel outside and facing south, and compare with the window results.
 
 ## Limitations
 
 - Power is **estimated** from Isc, not measured at the maximum power point; real output in weak light is slightly lower.
-- 10 A range resolution is 0.01 A, so low-light readings on that range are coarse.
+- 10 A range resolution is 0.01 A, so low-light readings on that range are coarse (Tuesday before 09:24 is on this range and reads somewhat high).
+- Tuesday 12:45–14:30 is not logged; daily energy is interpolated across that span.
 - Panel is behind window glass (~10–15% loss) and faces west, not south.
 
 ## Reproduce
@@ -92,6 +104,7 @@ Weather: Apple Weather, Passau, recorded conditions.
 ```bash
 pip install matplotlib
 python analysis/compare_window.py   # 14:30-16:30 per day -> figures/same_hours_comparison.png
+python analysis/full_day.py         # Tuesday sunrise to sunset -> figures/tuesday_full_day.png
 python analysis/daily_summary.py    # peak and energy for every logged day
 ```
 
