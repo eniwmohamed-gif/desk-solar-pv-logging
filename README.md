@@ -4,6 +4,10 @@ I'm a first-year Energy Systems Engineering student at Deggendorf Institute of T
 
 The system is a 20 Wp solar panel, a PWM charge controller and a 12 V AGM battery, tested over three days (25–27 Oct 2026) in Passau, Germany. The panel's short-circuit current was logged every 15 minutes to estimate how much energy it produces.
 
+![Test setup: panel behind the west-facing roof window, charge controller, battery and the laptop recording the multimeter](figures/setup_photo.jpg)
+
+*The test setup in Passau: panel fixed behind a west-facing roof window, with the charge controller, battery and the laptop camera recording the multimeter.*
+
 ![Wiring diagram](figures/wiring_diagram.png)
 
 ## System
