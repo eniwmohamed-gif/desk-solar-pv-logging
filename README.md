@@ -22,7 +22,7 @@ The system is a 20 Wp solar panel, a PWM charge controller and a 12 V AGM batter
 ## Method
 
 1. **Open-circuit voltage (Voc)** measured with the multimeter as a voltmeter.
-2. **Short-circuit current (Isc)** logged continuously: the multimeter on a current range (10 A, or 200 mA in weak light) shorts the panel, and a laptop camera recorded the display. Readings were taken from the video every 15 minutes.
+2. **Short-circuit current (Isc)** logged continuously: the multimeter on a current range (10 A, or 200 mA in weak light) shorts the panel, and a laptop camera recorded the display. Readings were taken from the video every 15 minutes; where the display alternated between two values, the midpoint is used.
 3. **Isc is proportional to irradiance**, so power is estimated as:
 
 ```
@@ -95,7 +95,7 @@ Output rose from sunrise, peaked mid-morning and faded towards sunset. Between 1
 ## Limitations
 
 - Power is **estimated** from Isc, not measured at the maximum power point; real output in weak light is slightly lower.
-- 10 A range resolution is 0.01 A, so low-light readings on that range are coarse (Tuesday before 09:24 is on this range and reads somewhat high).
+- 10 A range resolution is 0.01 A, so low-light readings on that range are coarse (Sunday before 14:51 and Tuesday before 09:24 were logged on this range; Tuesday's early values read somewhat high).
 - Tuesday 12:45–14:30 is not logged; daily energy is interpolated across that span.
 - Panel is behind window glass (~10–15% loss) and faces west, not south.
 
@@ -108,7 +108,7 @@ python analysis/full_day.py         # Tuesday sunrise to sunset -> figures/tuesd
 python analysis/daily_summary.py    # peak and energy for every logged day
 ```
 
-Data: `data/*.csv` (columns: `date, time, isc_A, range, source`). Full readings log: [`docs/readings_log.pdf`](docs/readings_log.pdf).
+Data: `data/*.csv` (columns: `date, time, isc_A, range, source`; `range` is the meter range used, `source` the camera recording the value was read from). Full readings log: [`docs/readings_log.pdf`](docs/readings_log.pdf).
 
 ## Test setup
 
